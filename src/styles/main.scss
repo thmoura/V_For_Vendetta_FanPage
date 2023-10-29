@@ -1,5 +1,60 @@
-$bgColor: rgb(10, 243, 60);
+@use 'variaveis';
+@use 'hero';
+
+/* Reset da pagina */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: $bgColor;
+    background-color: variaveis.$corDeFundo;
 }
+
+/* Mixin: utilizado para padronizar o tamanho das fontes,
+ não sendo necessario estilizar cada conteudo individualmente */
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$corTextoPrinciapal
+}
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+/* Estilo dos Textos */
+.text--big {
+    @include text(18px);
+}
+
+.text {
+    @include text;
+}
+
+.text--small {
+    @include text(12px);
+}
+
+/* Estilo do Link */
+.link-text {
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
+ /* Estilo dos Titulos */
+.title--big {
+    @include title(44px);
+}
+
+.title {
+    @include title;
+}
+
+.title--small {
+    @include title(28px);
+}
+
